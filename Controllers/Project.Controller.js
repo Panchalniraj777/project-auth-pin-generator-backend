@@ -78,14 +78,14 @@ module.exports = class ProjectAuthController {
         }
     };
 
-    generateAuth = (element, newNumbers) => {
+    generatePin = (element, newPins) => {
         let sixDigitPin = generateSixDigitPin();
 
-        if (newNumbers?.includes(sixDigitPin)) {
-            this.generateAuth(element, newNumbers);
+        if (newPins?.includes(sixDigitPin)) {
+            this.generatePin(element, newPins);
         } else {
             element.pin = sixDigitPin;
-            newNumbers.push(sixDigitPin);
+            newPins.push(sixDigitPin);
         }
 
         return {
@@ -112,8 +112,9 @@ module.exports = class ProjectAuthController {
                 });
             }
 
-            const newNumbers = [];
-            projectAuth = projectAuth.map(element => this.generateAuth(element, newNumbers));
+            // GENERATE PIN
+            const newPins = [];
+            projectAuth = projectAuth.map(element => this.generatePin(element, newPins));
 
             await ProjectModel.projectBulkWrite(projectAuth);
 
