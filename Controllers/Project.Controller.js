@@ -64,8 +64,7 @@ module.exports = class ProjectAuthController {
                 qr,
                 generateSixDigitPin()
             );
-
-            // 999999
+            
             await response.save();
 
             return res.status(STATUS_CODES.SUCCESS).send({
