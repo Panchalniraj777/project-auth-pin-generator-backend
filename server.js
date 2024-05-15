@@ -13,7 +13,6 @@ require('./Configs/globals'); // GLOBAL SETTINGS FILES
 
 const server = http.createServer(app);
 
-// ------------------------      GLOBAL MIDDLEWARES -------------------------
 app.use(bodyParser.json()); // ALLOW APPLICATION JSON
 app.use(bodyParser.urlencoded({ extended: false })); // ALLOW URL ENCODED PARSER
 app.use(
